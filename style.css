@@ -1,9 +1,14 @@
 :root {
   --paper: #faf9f5;
   --paper-deep: #f5f2eb;
+  --white: #fffdf9;
   --ink: #596a70;
+  --ink-light: #71838a;
   --blue: #dceaf0;
+  --blue-deep: #9dbbc9;
+  --blue-line: #d3e1e6;
   --paper-border: #ddd9cf;
+  --guide-bg: rgba(255, 255, 255, 0.94);
 }
 
 * {
@@ -17,7 +22,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+
   color: var(--ink);
+
   font-family: "Noto Serif JP", serif;
 
   background:
@@ -41,6 +48,7 @@ body {
   place-items: center;
 
   overflow: hidden;
+
   background: #fff;
 
   opacity: 1;
@@ -59,6 +67,7 @@ body {
 
 .envelope-scene {
   position: relative;
+
   width: min(82vw, 390px);
   aspect-ratio: 1.48 / 1;
 
@@ -111,8 +120,6 @@ body {
     inset 0 -1px 0 rgba(117, 143, 152, 0.08);
 }
 
-/* 紙の細かな質感
-   ※縦線は削除 */
 .envelope-back::before {
   content: "";
 
@@ -135,7 +142,6 @@ body {
   pointer-events: none;
 }
 
-/* ごく薄い紙の色ムラ */
 .envelope-back::after {
   content: "";
 
@@ -189,8 +195,6 @@ body {
     inset 0 -2px 5px rgba(88, 112, 121, 0.05);
 }
 
-/* ポケットの紙質感
-   ※縦線は削除 */
 .envelope-pocket::after {
   content: "";
 
@@ -239,8 +243,6 @@ body {
     inset 0 -1px 0 rgba(100, 125, 135, 0.08);
 }
 
-/* 前面の紙質感
-   ※縦線は削除 */
 .envelope-front::before {
   content: "";
 
@@ -263,7 +265,6 @@ body {
   pointer-events: none;
 }
 
-/* 前面のごく自然な色ムラ */
 .envelope-front::after {
   content: "";
 
@@ -324,8 +325,6 @@ body {
     transform 0.85s ease;
 }
 
-/* フラップの紙質感
-   ※縦線は削除 */
 .envelope-flap::before {
   content: "";
 
@@ -348,7 +347,6 @@ body {
   pointer-events: none;
 }
 
-/* フラップの折り目付近 */
 .envelope-flap::after {
   content: "";
 
@@ -401,6 +399,7 @@ body {
   background: transparent;
 
   transform: translate(-50%, -50%);
+
   cursor: pointer;
 
   transition:
@@ -682,6 +681,7 @@ body {
 
 .page {
   min-height: 100vh;
+
   padding: 40px 16px 60px;
 
   opacity: 0;
@@ -709,10 +709,11 @@ body {
 
 .invitation {
   width: min(100%, 500px);
-  margin: 0 auto;
-  padding: 38px 26px 42px;
 
-  background: rgba(255, 255, 255, 0.91);
+  margin: 0 auto;
+  padding: 42px 28px 46px;
+
+  background: rgba(255, 255, 255, 0.93);
 
   text-align: center;
 
@@ -736,12 +737,15 @@ h1 {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(36px, 9vw, 52px);
   font-weight: 400;
+
   letter-spacing: 0.04em;
 }
 
 .hero-photo {
   width: 100%;
+
   margin: 0 auto 28px;
+
   overflow: hidden;
 
   background: #f5f5f2;
@@ -749,8 +753,10 @@ h1 {
 
 .hero-photo img {
   display: block;
+
   width: 100%;
   height: auto;
+
   object-fit: cover;
 }
 
@@ -783,8 +789,8 @@ h1 {
   margin-top: 38px;
   padding: 28px 10px;
 
-  border-top: 1px solid #dce6e9;
-  border-bottom: 1px solid #dce6e9;
+  border-top: 1px solid var(--blue-line);
+  border-bottom: 1px solid var(--blue-line);
 
   font-size: 13px;
   line-height: 1.9;
@@ -809,6 +815,7 @@ h1 {
 .detail-line {
   width: 35px;
   height: 1px;
+
   margin: 23px auto;
 
   background: #c7d9e0;
@@ -825,6 +832,7 @@ h1 {
   display: inline-block;
 
   min-width: 180px;
+
   padding: 13px 30px;
 
   border: 1px solid #a8c1cc;
@@ -835,6 +843,7 @@ h1 {
   font-family: "Cormorant Garamond", serif;
   font-size: 17px;
   letter-spacing: 0.2em;
+
   text-decoration: none;
 
   transition:
@@ -844,6 +853,7 @@ h1 {
 
 .rsvp-button:hover {
   color: #fff;
+
   background: #9dbbc9;
 }
 
@@ -859,21 +869,635 @@ h1 {
 }
 
 /* ==================================
+   LINE用ガイドページ
+================================== */
+
+.guide-view {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 34px 16px 60px;
+}
+
+/* ガイド全体の白い紙 */
+
+.guide-container {
+  width: min(100%, 500px);
+
+  margin: 0 auto;
+  padding: 38px 28px 48px;
+
+  background: var(--guide-bg);
+
+  box-shadow:
+    0 5px 24px rgba(89, 106, 112, 0.08);
+}
+
+/* ==================================
+   ガイドヘッダー
+================================== */
+
+.guide-header {
+  margin-bottom: 38px;
+
+  text-align: center;
+}
+
+.guide-header::after {
+  content: "";
+
+  display: block;
+
+  width: 32px;
+  height: 1px;
+
+  margin: 23px auto 0;
+
+  background: var(--blue-deep);
+}
+
+.guide-page-title {
+  margin: 0;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 35px;
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.12em;
+}
+
+.guide-page-subtitle {
+  margin: 7px 0 0;
+
+  color: #71838a;
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+}
+
+/* ==================================
+   ガイドセクション
+================================== */
+
+.guide-section {
+  display: none;
+}
+
+.guide-section.active {
+  display: block;
+}
+
+/* ==================================
+   ガイド内の各ブロック
+================================== */
+
+.guide-block {
+  margin-bottom: 34px;
+}
+
+.guide-block:last-child {
+  margin-bottom: 0;
+}
+
+.guide-label {
+  margin: 0 0 9px;
+
+  color: #819eab;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+
+  letter-spacing: 0.18em;
+
+  text-align: center;
+}
+
+.guide-text {
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 2;
+
+  text-align: center;
+}
+
+.guide-note {
+  margin: 8px 0 0;
+
+  color: #829197;
+
+  font-size: 11px;
+
+  line-height: 1.9;
+
+  text-align: center;
+}
+
+/* ==================================
+   ガイド用区切り線
+================================== */
+
+.guide-divider {
+  width: 32px;
+  height: 1px;
+
+  margin: 28px auto;
+
+  background: var(--blue-line);
+}
+
+/* ==================================
+   日付・時間など
+================================== */
+
+.guide-date {
+  margin: 0;
+
+  color: #657f8b;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+
+  letter-spacing: 0.08em;
+
+  text-align: center;
+}
+
+.guide-time {
+  margin: 5px 0 0;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+
+  letter-spacing: 0.08em;
+
+  text-align: center;
+}
+
+/* ==================================
+   情報カード
+================================== */
+
+.guide-info {
+  padding: 20px 18px;
+
+  border-top: 1px solid var(--blue-line);
+  border-bottom: 1px solid var(--blue-line);
+}
+
+.guide-info-row {
+  display: grid;
+
+  grid-template-columns: 95px 1fr;
+
+  gap: 14px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #edf1f2;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+.guide-info-row:first-child {
+  padding-top: 0;
+}
+
+.guide-info-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.guide-info-label {
+  color: #819eab;
+
+  font-family: "Cormorant Garamond", serif;
+
+  letter-spacing: 0.08em;
+}
+
+.guide-info-value {
+  color: var(--ink);
+
+  word-break: break-word;
+}
+
+/* ==================================
+   ACCESS
+================================== */
+
+.guide-map {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 18px;
+  padding: 12px 16px;
+
+  border: 1px solid #a8c1cc;
+
+  color: #657f8b;
+  background: rgba(255, 255, 255, 0.65);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+
+  letter-spacing: 0.12em;
+
+  text-align: center;
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.guide-map:hover {
+  color: #fff;
+
+  background: var(--blue-deep);
+}
+
+/* ==================================
+   SCHEDULE
+================================== */
+
+.schedule-list {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.schedule-item {
+  display: grid;
+
+  grid-template-columns: 80px 1fr;
+
+  gap: 16px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid #e8eef0;
+}
+
+.schedule-item:first-child {
+  border-top: 1px solid #e8eef0;
+}
+
+.schedule-time {
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 17px;
+
+  letter-spacing: 0.04em;
+}
+
+.schedule-content {
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+.schedule-title {
+  margin: 0 0 2px;
+
+  font-size: 13px;
+}
+
+.schedule-note {
+  margin: 0;
+
+  color: #849298;
+
+  font-size: 11px;
+}
+
+/* ==================================
+   FAQ
+================================== */
+
+.faq-list {
+  display: flex;
+
+  flex-direction: column;
+
+  border-top: 1px solid var(--blue-line);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--blue-line);
+}
+
+.faq-question {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  padding: 18px 34px 18px 4px;
+
+  border: none;
+
+  color: var(--ink);
+
+  background: transparent;
+
+  font-family: "Noto Serif JP", serif;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.faq-question::after {
+  content: "+";
+
+  position: absolute;
+
+  top: 50%;
+  right: 5px;
+
+  color: #8da5ae;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  transform: translateY(-50%);
+
+  transition:
+    transform 0.3s ease;
+}
+
+.faq-item.open .faq-question::after {
+  transform:
+    translateY(-50%)
+    rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+
+  padding: 0 20px 20px 4px;
+
+  color: #75848a;
+
+  font-size: 11px;
+
+  line-height: 2;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+}
+
+/* ==================================
+   PHOTO
+================================== */
+
+.photo-share {
+  padding: 25px 20px;
+
+  border: 1px solid var(--blue-line);
+
+  text-align: center;
+}
+
+.photo-share-title {
+  margin: 0 0 10px;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 20px;
+
+  letter-spacing: 0.08em;
+}
+
+.photo-share-text {
+  margin: 0;
+
+  font-size: 11px;
+
+  line-height: 2;
+}
+
+.photo-share-button {
+  display: inline-block;
+
+  margin-top: 18px;
+
+  padding: 11px 26px;
+
+  border: 1px solid #a8c1cc;
+
+  color: #657f8b;
+  background: rgba(255, 255, 255, 0.7);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 15px;
+
+  letter-spacing: 0.12em;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.photo-share-button:hover {
+  color: #fff;
+
+  background: var(--blue-deep);
+}
+
+/* ==================================
+   AFTER PARTY
+================================== */
+
+.afterparty-box {
+  padding: 24px 20px;
+
+  border-top: 1px solid var(--blue-line);
+  border-bottom: 1px solid var(--blue-line);
+
+  text-align: center;
+}
+
+.afterparty-title {
+  margin: 0 0 18px;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+
+  letter-spacing: 0.1em;
+}
+
+.afterparty-text {
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 2;
+}
+
+/* ==================================
+   ガイドページ下部
+================================== */
+
+.guide-footer {
+  margin-top: 42px;
+
+  color: #879da6;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 13px;
+
+  font-style: italic;
+
+  letter-spacing: 0.06em;
+
+  text-align: center;
+}
+
+/* ==================================
+   共通リンク
+================================== */
+
+.guide-view a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==================================
    スマートフォン
 ================================== */
 
 @media (max-width: 420px) {
+
   .envelope-scene {
     width: 84vw;
   }
 
+  .page {
+    padding: 28px 10px 50px;
+  }
+
   .invitation {
-    width: calc(100% - 20px);
-    padding: 30px 18px 34px;
+    width: calc(100% - 12px);
+
+    padding: 32px 18px 38px;
   }
 
   .message {
     font-size: 12px;
+  }
+
+  /* ------------------------------
+     ガイド
+  ------------------------------ */
+
+  .guide-view {
+    padding: 24px 10px 48px;
+  }
+
+  .guide-container {
+    width: calc(100% - 10px);
+
+    padding: 32px 20px 40px;
+  }
+
+  .guide-header {
+    margin-bottom: 32px;
+  }
+
+  .guide-page-title {
+    font-size: 32px;
+  }
+
+  .guide-page-subtitle {
+    font-size: 11px;
+  }
+
+  .guide-info {
+    padding: 18px 12px;
+  }
+
+  .guide-info-row {
+    grid-template-columns: 82px 1fr;
+
+    gap: 10px;
+
+    font-size: 11px;
+  }
+
+  .schedule-item {
+    grid-template-columns: 68px 1fr;
+
+    gap: 12px;
+  }
+
+  .schedule-time {
+    font-size: 16px;
+  }
+
+  .faq-question {
+    padding-left: 2px;
+  }
+
+  .faq-answer {
+    padding-left: 2px;
+    padding-right: 14px;
+  }
+}
+
+/* ==================================
+   小さいスマートフォン
+================================== */
+
+@media (max-width: 360px) {
+
+  .invitation {
+    width: calc(100% - 4px);
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .guide-container {
+    width: calc(100% - 4px);
+
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .guide-info-row {
+    grid-template-columns: 76px 1fr;
+
+    gap: 8px;
   }
 }
 
@@ -882,289 +1506,12 @@ h1 {
 ================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
-}
-
-/* ==================================
-   LINE案内ページ
-================================== */
-
-.guide-view {
-  display: none;
-  min-height: 100vh;
-  padding-bottom: 50px;
-  background:
-    linear-gradient(
-      rgba(224, 238, 245, 0.72),
-      rgba(224, 238, 245, 0.72)
-    ),
-    url("background.jpg") center / cover fixed;
-}
-
-.guide-header {
-  padding: 48px 20px 30px;
-  text-align: center;
-}
-
-.guide-header-small {
-  margin: 0 0 6px;
-  color: #819eab;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-}
-
-.guide-header h1 {
-  margin: 0;
-  color: #718d9b;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(38px, 10vw, 50px);
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  line-height: 1;
-}
-
-.guide-header-jp {
-  margin: 9px 0 0;
-  color: #657f8b;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-}
-
-.guide-section {
-  display: none;
-  width: min(100% - 20px, 500px);
-  margin: 0 auto;
-  padding: 34px 24px 42px;
-  background: rgba(255, 255, 255, 0.91);
-  box-shadow: 0 5px 24px rgba(89, 106, 112, 0.08);
-}
-
-.guide-block {
-  text-align: center;
-}
-
-.guide-label {
-  margin: 0 0 8px;
-  color: #819eab;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 13px;
-  letter-spacing: 0.2em;
-}
-
-.guide-block h2 {
-  margin: 0 0 13px;
-  color: #718d9b;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 25px;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-}
-
-.guide-text {
-  margin: 5px 0;
-  font-size: 13px;
-  line-height: 2;
-}
-
-.guide-divider {
-  width: 35px;
-  height: 1px;
-  margin: 25px auto;
-  background: #c7d9e0;
-}
-
-.guide-button {
-  display: inline-block;
-  min-width: 170px;
-  margin-top: 17px;
-  padding: 11px 24px;
-  border: 1px solid #a8c1cc;
-  color: #657f8b;
-  background: rgba(255, 255, 255, 0.65);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 16px;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  transition:
-    color 0.25s ease,
-    background 0.25s ease;
-}
-
-.guide-button:hover {
-  color: #fff;
-  background: #9dbbc9;
-}
-
-
-/* ==================================
-   SCHEDULE
-================================== */
-
-.timeline {
-  position: relative;
-  padding: 5px 0;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 65px;
-  width: 1px;
-  background: #c7d9e0;
-}
-
-.timeline-item {
-  position: relative;
-  display: grid;
-  grid-template-columns: 50px 30px 1fr;
-  min-height: 82px;
-}
-
-.timeline-time {
-  margin: 0;
-  padding-top: 1px;
-  color: #657f8b;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 15px;
-  text-align: right;
-}
-
-.timeline-dot {
-  position: relative;
-  z-index: 2;
-  width: 8px;
-  height: 8px;
-  margin: 5px auto 0;
-  border-radius: 50%;
-  background: #a8c1cc;
-}
-
-.timeline-text {
-  padding-left: 14px;
-}
-
-.timeline-text .guide-label {
-  margin-bottom: 2px;
-}
-
-.timeline-text p:last-child {
-  margin: 0;
-  font-size: 13px;
-}
-
-
-/* ==================================
-   FAQ
-================================== */
-
-.faq-item {
-  border-bottom: 1px solid #dce6e9;
-}
-
-.faq-item:first-child {
-  border-top: 1px solid #dce6e9;
-}
-
-.faq-question {
-  display: grid;
-  grid-template-columns: 28px 1fr 20px;
-  align-items: center;
-  width: 100%;
-  gap: 7px;
-  padding: 17px 0;
-  border: none;
-  background: transparent;
-  color: #596a70;
-  font-family: "Noto Serif JP", serif;
-  font-size: 12px;
-  line-height: 1.7;
-  text-align: left;
-  cursor: pointer;
-}
-
-.faq-number {
-  color: #819eab;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 14px;
-}
-
-.faq-plus {
-  color: #819eab;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
-  text-align: right;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-
-.faq-answer p {
-  margin: 0;
-  padding: 0 27px 18px 35px;
-  color: #657f8b;
-  font-size: 12px;
-  line-height: 2;
-}
-
-
-/* ==================================
-   PHOTO
-================================== */
-
-.photo-content {
-  text-align: center;
-}
-
-
-/* ==================================
-   案内ページフッター
-================================== */
-
-.guide-footer {
-  padding: 34px 20px 0;
-  text-align: center;
-}
-
-.guide-footer p {
-  margin: 0;
-  color: #879da6;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 14px;
-  font-style: italic;
-  letter-spacing: 0.04em;
-}
-
-
-/* ==================================
-   スマートフォン
-================================== */
-
-@media (max-width: 420px) {
-
-  .guide-section {
-    width: calc(100% - 20px);
-    padding: 30px 18px 38px;
-  }
-
-  .guide-header {
-    padding: 44px 16px 27px;
-  }
-
-  .timeline::before {
-    left: 61px;
-  }
-
-  .timeline-item {
-    grid-template-columns: 46px 30px 1fr;
-  }
-
 }
