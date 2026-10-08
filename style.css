@@ -958,6 +958,8 @@ h1 {
 
 .guide-block {
   margin-bottom: 34px;
+
+  text-align: center;
 }
 
 .guide-block:last-child {
@@ -1049,6 +1051,8 @@ h1 {
 
   border-top: 1px solid var(--blue-line);
   border-bottom: 1px solid var(--blue-line);
+
+  text-align: center;
 }
 
 .guide-info-row {
@@ -1065,6 +1069,8 @@ h1 {
   font-size: 12px;
 
   line-height: 1.8;
+
+  text-align: center;
 }
 
 .guide-info-row:first-child {
@@ -1082,12 +1088,16 @@ h1 {
   font-family: "Cormorant Garamond", serif;
 
   letter-spacing: 0.08em;
+
+  text-align: center;
 }
 
 .guide-info-value {
   color: var(--ink);
 
   word-break: break-word;
+
+  text-align: center;
 }
 
 /* ==================================
@@ -1147,6 +1157,8 @@ h1 {
   padding: 17px 0;
 
   border-bottom: 1px solid #e8eef0;
+
+  text-align: center;
 }
 
 .schedule-item:first-child {
@@ -1161,18 +1173,24 @@ h1 {
   font-size: 17px;
 
   letter-spacing: 0.04em;
+
+  text-align: center;
 }
 
 .schedule-content {
   font-size: 12px;
 
   line-height: 1.8;
+
+  text-align: center;
 }
 
 .schedule-title {
   margin: 0 0 2px;
 
   font-size: 13px;
+
+  text-align: center;
 }
 
 .schedule-note {
@@ -1181,6 +1199,8 @@ h1 {
   color: #849298;
 
   font-size: 11px;
+
+  text-align: center;
 }
 
 /* ==================================
@@ -1262,6 +1282,8 @@ h1 {
   font-size: 11px;
 
   line-height: 2;
+
+  text-align: left;
 }
 
 .faq-item.open .faq-answer {
@@ -1298,6 +1320,8 @@ h1 {
   font-size: 11px;
 
   line-height: 2;
+
+  text-align: center;
 }
 
 .photo-share-button {
@@ -1362,6 +1386,8 @@ h1 {
   font-size: 12px;
 
   line-height: 2;
+
+  text-align: center;
 }
 
 /* ==================================
@@ -1452,16 +1478,22 @@ h1 {
     gap: 10px;
 
     font-size: 11px;
+
+    text-align: center;
   }
 
   .schedule-item {
     grid-template-columns: 68px 1fr;
 
     gap: 12px;
+
+    text-align: center;
   }
 
   .schedule-time {
     font-size: 16px;
+
+    text-align: center;
   }
 
   .faq-question {
@@ -1471,6 +1503,8 @@ h1 {
   .faq-answer {
     padding-left: 2px;
     padding-right: 14px;
+
+    text-align: left;
   }
 }
 
@@ -1498,6 +1532,8 @@ h1 {
     grid-template-columns: 76px 1fr;
 
     gap: 8px;
+
+    text-align: center;
   }
 }
 
