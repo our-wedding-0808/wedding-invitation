@@ -1,0 +1,1170 @@
+:root {
+  --paper: #faf9f5;
+  --paper-deep: #f5f2eb;
+  --ink: #596a70;
+  --blue: #dceaf0;
+  --paper-border: #ddd9cf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Noto Serif JP", serif;
+
+  background:
+    linear-gradient(
+      rgba(224, 238, 245, 0.72),
+      rgba(224, 238, 245, 0.72)
+    ),
+    url("background.jpg") center / cover fixed;
+}
+
+/* ==================================
+   オープニング画面
+================================== */
+
+.opening {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+  background: #fff;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.9s ease,
+    visibility 0.9s ease;
+}
+
+.opening.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-scene {
+  position: relative;
+  width: min(82vw, 390px);
+  aspect-ratio: 1.48 / 1;
+
+  perspective: 1400px;
+  perspective-origin: center center;
+}
+
+/* ==================================
+   封筒
+================================== */
+
+.envelope {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  filter:
+    drop-shadow(0 12px 18px rgba(72, 92, 100, 0.13))
+    drop-shadow(0 3px 5px rgba(72, 92, 100, 0.07));
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+/* ----------------------------------
+   封筒の背面
+---------------------------------- */
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      115deg,
+      #edf4f6 0%,
+      #e7f0f2 30%,
+      #e2ecef 65%,
+      #dce8ed 100%
+    );
+
+  border: 1px solid rgba(191, 210, 217, 0.95);
+  border-radius: 4px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(117, 143, 152, 0.08);
+}
+
+/* 紙の細かな質感
+   ※縦線は削除 */
+.envelope-back::before {
+  content: "";
+
+  position: absolute;
+  inset: -30%;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.035) 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  transform: rotate(-7deg);
+
+  opacity: 0.75;
+
+  pointer-events: none;
+}
+
+/* ごく薄い紙の色ムラ */
+.envelope-back::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 20%,
+      rgba(255, 255, 255, 0.28),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 82% 78%,
+      rgba(130, 160, 170, 0.055),
+      transparent 42%
+    );
+
+  pointer-events: none;
+}
+
+/* ----------------------------------
+   封筒の内側
+---------------------------------- */
+
+.envelope-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e5eff2 0%,
+      #dfebee 40%,
+      #d8e5ea 100%
+    );
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    50% 63%,
+    0 100%
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 5px rgba(88, 112, 121, 0.05);
+}
+
+/* ポケットの紙質感
+   ※縦線は削除 */
+.envelope-pocket::after {
+  content: "";
+
+  position: absolute;
+  inset: -20%;
+
+  background: none;
+
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+/* ----------------------------------
+   封筒前面
+---------------------------------- */
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      140deg,
+      #ebf3f5 0%,
+      #e7eff2 35%,
+      #e1ebef 72%,
+      #dce8ed 100%
+    );
+
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    50% 58%,
+    100% 0,
+    100% 100%
+  );
+
+  border-radius: 3px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -1px 0 rgba(100, 125, 135, 0.08);
+}
+
+/* 前面の紙質感
+   ※縦線は削除 */
+.envelope-front::before {
+  content: "";
+
+  position: absolute;
+  inset: -20%;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  transform: rotate(2deg);
+
+  opacity: 0.9;
+
+  pointer-events: none;
+}
+
+/* 前面のごく自然な色ムラ */
+.envelope-front::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 25% 25%,
+      rgba(255, 255, 255, 0.18),
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 75% 80%,
+      rgba(108, 139, 149, 0.045),
+      transparent 40%
+    );
+
+  pointer-events: none;
+}
+
+/* ----------------------------------
+   フラップ
+---------------------------------- */
+
+.envelope-flap {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 5;
+
+  height: 58%;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      140deg,
+      #f0f6f7 0%,
+      #ebf2f4 34%,
+      #e5eef1 70%,
+      #e0eaee 100%
+    );
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 100%
+  );
+
+  transform-origin: center top;
+  transform: rotateX(0deg);
+
+  box-shadow:
+    0 4px 9px rgba(70, 95, 105, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  transition:
+    transform 0.85s ease;
+}
+
+/* フラップの紙質感
+   ※縦線は削除 */
+.envelope-flap::before {
+  content: "";
+
+  position: absolute;
+  inset: -30%;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.035) 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  transform: rotate(-4deg);
+
+  opacity: 0.85;
+
+  pointer-events: none;
+}
+
+/* フラップの折り目付近 */
+.envelope-flap::after {
+  content: "";
+
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0;
+
+  height: 18px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(89, 113, 122, 0.09)
+    );
+
+  filter: blur(4px);
+
+  opacity: 0.65;
+
+  pointer-events: none;
+}
+
+.opening.flap-open .envelope-flap {
+  transform: rotateX(-180deg);
+}
+
+.opening.envelope-away .envelope {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  pointer-events: none;
+}
+
+/* ==================================
+   シーリングスタンプ
+================================== */
+
+.wax {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  z-index: 30;
+
+  width: 68px;
+  height: 68px;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.wax img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 3px 5px rgba(80, 70, 65, 0.16));
+}
+
+.wax:active {
+  transform:
+    translate(-50%, -50%)
+    scale(0.94);
+}
+
+.opening.started .wax {
+  opacity: 0;
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.7);
+}
+
+.tap {
+  position: absolute;
+  left: 50%;
+  top: calc(52% + 38px);
+  z-index: 31;
+
+  color: #829da9;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+
+  transform: translateX(-50%);
+
+  transition: opacity 0.3s ease;
+}
+
+.opening.started .tap {
+  opacity: 0;
+}
+
+/* ==================================
+   便箋全体
+================================== */
+
+.letter {
+  position: absolute;
+  left: 15%;
+  bottom: 5%;
+
+  width: 70%;
+  height: 90%;
+
+  z-index: 1;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(24px);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.8s ease,
+    visibility 0s linear 0.8s;
+}
+
+.opening.letter-out .letter {
+  z-index: 20;
+
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(-8%);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.8s ease,
+    visibility 0s;
+}
+
+/* ==================================
+   下半分：固定された紙
+================================== */
+
+.letter-base {
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  width: 100%;
+  height: 50%;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffefa 0%,
+      #faf8f2 100%
+    );
+
+  border: 1px solid var(--paper-border);
+
+  box-shadow:
+    0 5px 20px rgba(80, 70, 60, 0.10),
+    0 0 0 1px rgba(190, 180, 165, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.paper-surface {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.38),
+      rgba(235, 230, 218, 0.08)
+    );
+}
+
+/* ==================================
+   上半分：折り返す紙
+================================== */
+
+.letter-fold {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 50%;
+
+  z-index: 3;
+
+  transform-origin: center bottom;
+
+  transform: rotateX(180deg);
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 1.25s cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+
+.fold-front,
+.fold-back {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  border: 1px solid var(--paper-border);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffefa 0%,
+      #faf8f2 100%
+    );
+
+  box-shadow:
+    0 2px 10px rgba(80, 70, 60, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.fold-front {
+  transform: rotateX(0deg);
+}
+
+.fold-back {
+  transform: rotateX(180deg);
+}
+
+/* ==================================
+   便箋中央の文字
+================================== */
+
+.letter-content {
+  position: absolute;
+  inset: 0;
+
+  z-index: 25;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #71838a;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.45s ease;
+}
+
+.opening.letter-open .letter-content {
+  opacity: 1;
+
+  transition-delay: 0.15s;
+}
+
+.letter-title {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4vw, 21px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+/* ==================================
+   中央の折り目
+================================== */
+
+.letter-crease {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  z-index: 26;
+
+  width: 100%;
+  height: 1px;
+
+  background: rgba(190, 180, 165, 0.45);
+
+  transform: translateY(-0.5px);
+
+  transition: opacity 0.15s ease;
+}
+
+/* ==================================
+   上方向に開く
+================================== */
+
+.opening.letter-open .letter-fold {
+  transform: rotateX(360deg);
+}
+
+/* ==================================
+   便箋が開いたら境界線を消す
+================================== */
+
+.opening.letter-open .letter-crease,
+.opening.letter-open .letter-base,
+.opening.letter-open .fold-front,
+.opening.letter-open .fold-back {
+  border-color: transparent;
+}
+
+.opening.letter-open .letter-crease {
+  opacity: 0;
+}
+
+/* ==================================
+   招待状本編
+================================== */
+
+.page {
+  min-height: 100vh;
+  padding: 40px 16px 60px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 0s linear 1s;
+}
+
+.page.show {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 0s;
+}
+
+.invitation {
+  width: min(100%, 500px);
+  margin: 0 auto;
+  padding: 38px 26px 42px;
+
+  background: rgba(255, 255, 255, 0.91);
+
+  text-align: center;
+
+  box-shadow:
+    0 5px 24px rgba(89, 106, 112, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+}
+
+h1 {
+  margin: 0 0 28px;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(36px, 9vw, 52px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.hero-photo {
+  width: 100%;
+  margin: 0 auto 28px;
+  overflow: hidden;
+
+  background: #f5f5f2;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.couple-names {
+  margin: 0 0 32px;
+
+  font-size: 19px;
+  letter-spacing: 0.08em;
+}
+
+.couple-names span {
+  padding: 0 8px;
+
+  color: #9dbbc9;
+
+  font-family: "Cormorant Garamond", serif;
+}
+
+.message {
+  font-size: 13px;
+  line-height: 2.25;
+  letter-spacing: 0.03em;
+}
+
+.message p {
+  margin: 0 0 23px;
+}
+
+.details {
+  margin-top: 38px;
+  padding: 28px 10px;
+
+  border-top: 1px solid #dce6e9;
+  border-bottom: 1px solid #dce6e9;
+
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.section-label {
+  margin: 0 0 7px;
+
+  color: #819eab;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+.date {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  letter-spacing: 0.08em;
+}
+
+.detail-line {
+  width: 35px;
+  height: 1px;
+  margin: 23px auto;
+
+  background: #c7d9e0;
+}
+
+.rsvp-message {
+  margin: 30px 0 22px;
+
+  font-size: 12px;
+  line-height: 2;
+}
+
+.rsvp-button {
+  display: inline-block;
+
+  min-width: 180px;
+  padding: 13px 30px;
+
+  border: 1px solid #a8c1cc;
+
+  color: #657f8b;
+  background: rgba(255, 255, 255, 0.65);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.rsvp-button:hover {
+  color: #fff;
+  background: #9dbbc9;
+}
+
+.footer-text {
+  margin: 34px 0 0;
+
+  color: #879da6;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+/* ==================================
+   スマートフォン
+================================== */
+
+@media (max-width: 420px) {
+  .envelope-scene {
+    width: 84vw;
+  }
+
+  .invitation {
+    width: calc(100% - 20px);
+    padding: 30px 18px 34px;
+  }
+
+  .message {
+    font-size: 12px;
+  }
+}
+
+/* ==================================
+   動きを減らす設定
+================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==================================
+   LINE案内ページ
+================================== */
+
+.guide-view {
+  display: none;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  background:
+    linear-gradient(
+      rgba(224, 238, 245, 0.72),
+      rgba(224, 238, 245, 0.72)
+    ),
+    url("background.jpg") center / cover fixed;
+}
+
+.guide-header {
+  padding: 48px 20px 30px;
+  text-align: center;
+}
+
+.guide-header-small {
+  margin: 0 0 6px;
+  color: #819eab;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+}
+
+.guide-header h1 {
+  margin: 0;
+  color: #718d9b;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 10vw, 50px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.guide-header-jp {
+  margin: 9px 0 0;
+  color: #657f8b;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+
+.guide-section {
+  display: none;
+  width: min(100% - 20px, 500px);
+  margin: 0 auto;
+  padding: 34px 24px 42px;
+  background: rgba(255, 255, 255, 0.91);
+  box-shadow: 0 5px 24px rgba(89, 106, 112, 0.08);
+}
+
+.guide-block {
+  text-align: center;
+}
+
+.guide-label {
+  margin: 0 0 8px;
+  color: #819eab;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+.guide-block h2 {
+  margin: 0 0 13px;
+  color: #718d9b;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.guide-text {
+  margin: 5px 0;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.guide-divider {
+  width: 35px;
+  height: 1px;
+  margin: 25px auto;
+  background: #c7d9e0;
+}
+
+.guide-button {
+  display: inline-block;
+  min-width: 170px;
+  margin-top: 17px;
+  padding: 11px 24px;
+  border: 1px solid #a8c1cc;
+  color: #657f8b;
+  background: rgba(255, 255, 255, 0.65);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.guide-button:hover {
+  color: #fff;
+  background: #9dbbc9;
+}
+
+
+/* ==================================
+   SCHEDULE
+================================== */
+
+.timeline {
+  position: relative;
+  padding: 5px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 65px;
+  width: 1px;
+  background: #c7d9e0;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px 30px 1fr;
+  min-height: 82px;
+}
+
+.timeline-time {
+  margin: 0;
+  padding-top: 1px;
+  color: #657f8b;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  text-align: right;
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  margin: 5px auto 0;
+  border-radius: 50%;
+  background: #a8c1cc;
+}
+
+.timeline-text {
+  padding-left: 14px;
+}
+
+.timeline-text .guide-label {
+  margin-bottom: 2px;
+}
+
+.timeline-text p:last-child {
+  margin: 0;
+  font-size: 13px;
+}
+
+
+/* ==================================
+   FAQ
+================================== */
+
+.faq-item {
+  border-bottom: 1px solid #dce6e9;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid #dce6e9;
+}
+
+.faq-question {
+  display: grid;
+  grid-template-columns: 28px 1fr 20px;
+  align-items: center;
+  width: 100%;
+  gap: 7px;
+  padding: 17px 0;
+  border: none;
+  background: transparent;
+  color: #596a70;
+  font-family: "Noto Serif JP", serif;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-number {
+  color: #819eab;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+}
+
+.faq-plus {
+  color: #819eab;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  text-align: right;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+  margin: 0;
+  padding: 0 27px 18px 35px;
+  color: #657f8b;
+  font-size: 12px;
+  line-height: 2;
+}
+
+
+/* ==================================
+   PHOTO
+================================== */
+
+.photo-content {
+  text-align: center;
+}
+
+
+/* ==================================
+   案内ページフッター
+================================== */
+
+.guide-footer {
+  padding: 34px 20px 0;
+  text-align: center;
+}
+
+.guide-footer p {
+  margin: 0;
+  color: #879da6;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+
+/* ==================================
+   スマートフォン
+================================== */
+
+@media (max-width: 420px) {
+
+  .guide-section {
+    width: calc(100% - 20px);
+    padding: 30px 18px 38px;
+  }
+
+  .guide-header {
+    padding: 44px 16px 27px;
+  }
+
+  .timeline::before {
+    left: 61px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 46px 30px 1fr;
+  }
+
+}

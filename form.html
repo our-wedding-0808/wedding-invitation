@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RSVP | Our Wedding</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+
+  <main class="form-page">
+
+    <section class="form-container">
+
+      <header class="form-header">
+        <p class="form-eyebrow">WEDDING INVITATION</p>
+
+        <h1>RSVP</h1>
+
+        <p class="form-intro">
+          ご出欠のご回答をお願いいたします
+        </p>
+      </header>
+
+
+      <form id="rsvpForm">
+
+        <!-- お名前 -->
+        <section class="form-section">
+
+          <label class="form-label">
+            お名前
+            <span class="required">必須</span>
+          </label>
+
+          <p class="form-note">
+            ご家族でご招待している場合は、代表の方1名がご回答ください。<br>
+            代表者以外のご家族については、下記の「同伴者」欄よりご入力をお願いいたします。
+          </p>
+
+          <input
+            type="text"
+            name="name"
+            placeholder="山田 太郎"
+            required
+          >
+
+        </section>
+
+
+        <!-- ご出欠 -->
+        <section class="form-section">
+
+          <label class="form-label">
+            ご出欠
+            <span class="required">必須</span>
+          </label>
+
+          <div class="radio-group">
+
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="attendance"
+                value="出席"
+                required
+              >
+              <span>出席</span>
+            </label>
+
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="attendance"
+                value="欠席"
+              >
+              <span>欠席</span>
+            </label>
+
+          </div>
+
+        </section>
+
+
+        <!-- 出席時のみ表示 -->
+        <div
+          id="attendanceDetails"
+          class="conditional-area hidden"
+        >
+
+
+          <!-- 電話番号 -->
+          <section class="form-section">
+
+            <label class="form-label">
+              電話番号
+              <span class="required">必須</span>
+            </label>
+
+            <p class="form-note">
+              当日連絡のつきやすい電話番号をご入力ください。
+            </p>
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="090-1234-5678"
+            >
+
+          </section>
+
+
+          <!-- 同伴者 -->
+          <section class="form-section">
+
+            <label class="form-label">
+              同伴者
+              <span class="required">必須</span>
+            </label>
+
+            <p class="form-note">
+              ご家族でご出席される場合は、代表者以外のご家族もこちらにご入力ください。
+            </p>
+
+            <div class="radio-group">
+
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="companion"
+                  value="なし"
+                >
+                <span>なし</span>
+              </label>
+
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="companion"
+                  value="あり"
+                >
+                <span>あり</span>
+              </label>
+
+            </div>
+
+
+            <div
+              id="companionDetails"
+              class="conditional-area hidden"
+            >
+
+              <label class="sub-label">
+                同伴者の人数
+              </label>
+
+              <input
+                type="number"
+                name="companionCount"
+                min="1"
+                max="20"
+                placeholder="例：2"
+              >
+
+
+              <label class="sub-label">
+                同伴者のお名前
+              </label>
+
+              <textarea
+                name="companionNames"
+                rows="3"
+                placeholder="例：山田 花子&#10;山田 太郎"
+              ></textarea>
+
+            </div>
+
+          </section>
+
+
+          <!-- お子さま -->
+          <section class="form-section">
+
+            <label class="form-label">
+              お子さま
+              <span class="required">必須</span>
+            </label>
+
+            <p class="form-note">
+              同伴者にお子さまがいらっしゃる場合はご入力ください。
+            </p>
+
+            <div class="radio-group">
+
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="children"
+                  value="なし"
+                >
+                <span>なし</span>
+              </label>
+
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="children"
+                  value="あり"
+                >
+                <span>あり</span>
+              </label>
+
+            </div>
+
+
+            <div
+              id="childrenDetails"
+              class="conditional-area hidden"
+            >
+
+              <label class="sub-label">
+                お子さまの人数
+              </label>
+
+              <input
+                type="number"
+                name="childrenCount"
+                min="1"
+                max="20"
+                placeholder="例：1"
+              >
+
+
+              <label class="sub-label">
+                お子さまの年齢
+              </label>
+
+              <input
+                type="text"
+                name="childrenAges"
+                placeholder="例：5歳、2歳"
+              >
+
+
+              <div class="children-meal">
+
+                <p class="sub-label">
+                  お子さまのお食事について
+                </p>
+
+                <p class="form-note">
+                  当日は大人と同じ料理をご用意する予定です。<br>
+                  できる限りお子さまにもお召し上がりいただきやすいよう
+                  配慮いたしますが、あらかじめご了承ください。
+                </p>
+
+                <div class="radio-stack">
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="childrenMeal"
+                      value="大人と同じ料理で問題ない"
+                    >
+                    大人と同じ料理で問題ない
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="childrenMeal"
+                      value="必要なし"
+                    >
+                    必要なし
+                  </label>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- 食物アレルギー -->
+          <section class="form-section">
+
+            <label class="form-label">
+              食物アレルギー
+              <span class="required">必須</span>
+            </label>
+
+            <p class="form-note">
+              アレルギーがある場合は、できる限り対応いたしますので、
+              詳細をご入力ください。
+            </p>
+
+            <div class="radio-group">
+
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="allergy"
+                  value="なし"
+                >
+                <span>なし</span>
+              </label>
+
+              <label class="radio-card">
+                <input
+                  type="radio"
+                  name="allergy"
+                  value="あり"
+                >
+                <span>あり</span>
+              </label>
+
+            </div>
+
+
+            <div
+              id="allergyDetails"
+              class="conditional-area hidden"
+            >
+
+              <label class="sub-label">
+                アレルギーの詳細
+              </label>
+
+              <p class="form-note">
+                同伴者がいらっしゃる場合は、
+                「誰が・何に対してアレルギーがあるのか」が
+                分かるようにご入力ください。
+              </p>
+
+              <textarea
+                name="allergyDetails"
+                rows="5"
+                placeholder="例：&#10;本人：えび・かに&#10;同伴者（山田 花子）：卵&#10;子ども（5歳）：そば"
+              ></textarea>
+
+            </div>
+
+          </section>
+
+
+          <!-- その他の食事・配慮事項 -->
+          <section class="form-section">
+
+            <label class="form-label">
+              その他の食事・配慮事項
+              <span class="optional">任意</span>
+            </label>
+
+            <p class="form-note">
+              アレルギー以外で苦手な食べ物や、
+              その他配慮が必要なことがございましたらご記入ください。
+            </p>
+
+            <textarea
+              name="otherConsiderations"
+              rows="5"
+              placeholder="ご自由にご記入ください"
+            ></textarea>
+
+          </section>
+
+        </div>
+
+
+        <!-- 新郎新婦へのメッセージ -->
+        <section class="form-section">
+
+          <label class="form-label">
+            新郎新婦へのメッセージ
+            <span class="optional">任意</span>
+          </label>
+
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="メッセージをご自由にお寄せください"
+          ></textarea>
+
+        </section>
+
+
+        <!-- 送信ボタン -->
+        <button
+          type="submit"
+          class="submit-button"
+          id="submitButton"
+        >
+          回答を送信する
+        </button>
+
+        <p
+          id="formMessage"
+          class="form-message"
+        ></p>
+
+      </form>
+
+
+      <!-- 回答完了画面 -->
+      <div
+        id="completeMessage"
+        class="complete-message hidden"
+      >
+
+        <p class="complete-eyebrow">
+          THANK YOU
+        </p>
+
+        <h2>
+          ご回答ありがとう<br>
+          ございました
+        </h2>
+
+        <p>
+          当日お会いできることを<br>
+          心より楽しみにしております。
+        </p>
+
+
+        <!-- 出席者のみ表示 -->
+        <div
+          id="lineGuide"
+          class="line-guide hidden"
+        >
+
+          <div class="complete-divider"></div>
+
+          <p class="line-guide-title">
+            公式LINEのご案内
+          </p>
+
+
+          <!-- QRコード -->
+          <div class="line-qr">
+
+            <img
+              src="line-qr.png"
+              alt="公式LINEのQRコード"
+            >
+
+          </div>
+
+          <!-- LINE追加リンク -->
+         <a
+         class="line-link"
+         href="https://lin.ee/tvDz8q7"
+         target="_blank"
+         rel="noopener noreferrer"
+         >
+         https://lin.ee/tvDz8q7
+        </a>
+
+
+
+          <!-- 公式LINEについて -->
+    
+          <p class="line-guide-text">
+            今後、新郎新婦からのご案内は、<br>
+            個別にご連絡する場合を除き、<br>
+            こちらの公式LINEにてお知らせいたします。
+          </p>
+
+          <p class="line-guide-text line-registration-note">
+            上記QRコードもしくはURLのどちらからでも登録できます。
+          </p>
+
+          <p class="line-guide-text">
+            ご出席の皆さまは、<br>
+            必ず友だち追加をお願いいたします。
+          </p>
+
+
+          <p class="line-guide-text">
+            ご家族でご出席される場合も、<br>
+            お子さまを除き、代表者以外の方も<br>
+            それぞれ友だち追加をお願いいたします。
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="form.js"></script>
+
+</body>
+</html>

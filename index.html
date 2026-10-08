@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Wedding Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ================================
+       通常の招待状
+  ================================= -->
+  <div class="invitation-view" id="invitationView">
+
+    <!-- オープニング -->
+    <div class="opening" id="opening">
+      <div class="envelope-scene">
+
+        <!-- 二つ折りの便箋 -->
+        <div class="letter" id="letter">
+
+          <!-- 便箋の下半分：動かない部分 -->
+          <div class="letter-base">
+            <div class="paper-surface"></div>
+          </div>
+
+          <!-- 便箋の上半分：折り目を軸に開く部分 -->
+          <div class="letter-fold" id="letterFold">
+
+            <!-- 閉じたときに見える裏面 -->
+            <div class="fold-back">
+              <div class="paper-surface"></div>
+            </div>
+
+            <!-- 開いたときに見える表面 -->
+            <div class="fold-front">
+              <div class="paper-surface"></div>
+            </div>
+
+          </div>
+
+          <!-- 便箋全体の中央に表示する文字 -->
+          <div class="letter-content">
+            <p class="letter-title">Wedding Invitation</p>
+          </div>
+
+          <!-- 中央の折り目 -->
+          <div class="letter-crease"></div>
+
+        </div>
+
+        <!-- 封筒 -->
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-pocket"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-front"></div>
+        </div>
+
+        <!-- シーリングスタンプ -->
+        <button
+          class="wax"
+          id="wax"
+          type="button"
+          aria-label="招待状を開く"
+        >
+          <img src="sealing-stamp.PNG" alt="">
+        </button>
+
+        <div class="tap" id="tap">TAP</div>
+
+      </div>
+    </div>
+
+    <!-- 招待状本編 -->
+    <main class="page" id="page">
+      <section class="invitation">
+
+        <p class="eyebrow">WE ARE GETTING MARRIED</p>
+
+        <h1>Our Wedding</h1>
+
+        <div class="hero-photo">
+          <img src="couple.jpg" alt="Wedding">
+        </div>
+
+        <p class="couple-names">
+          ⚪︎ <span>&</span> ⚪︎
+        </p>
+
+        <div class="message">
+          <p>
+            私たちは2025年12月に入籍し<br>
+            夫婦としての日々を過ごしてきました
+          </p>
+
+          <p>
+            そしてこの度<br>
+            大切な皆さまに見守っていただきながら<br>
+            結婚式を挙げることになりました
+          </p>
+
+          <p>
+            これまで私たちに関わってくださった皆さまへ<br>
+            日頃の感謝を伝えるとともに<br>
+            楽しい時間を一緒に過ごせたらと思っています
+          </p>
+
+          <p>
+            ぜひ私たちの大切な一日に<br>
+            お越しいただけたら嬉しいです
+          </p>
+        </div>
+
+        <div class="details">
+          <p class="section-label">DATE</p>
+          <p class="date">2027.08.08 SUN</p>
+
+          <div class="detail-line"></div>
+
+          <p class="section-label">CEREMONY & RECEPTION</p>
+          <p>⚪︎⚪︎</p>
+          <p>受付時間・挙式時間を入力</p>
+
+          <div class="detail-line"></div>
+
+          <p class="section-label">DRESS CODE</p>
+          <p>平服でお越しください</p>
+        </div>
+
+        <p class="rsvp-message">
+          ご出欠につきましては<br>
+          下記フォームよりご回答をお願いいたします
+        </p>
+
+        <a class="rsvp-button" href="form.html">
+          RSVP
+        </a>
+
+        <p class="footer-text">We look forward to seeing you</p>
+
+      </section>
+    </main>
+
+  </div>
+
+
+  <!-- ================================
+       LINEから開く案内ページ
+       ?guide=about などで表示
+  ================================= -->
+  <div class="guide-view" id="guideView">
+
+    <header class="guide-header">
+      <p class="guide-header-small">OUR WEDDING</p>
+      <h1 id="guidePageTitle">ABOUT</h1>
+      <p class="guide-header-jp" id="guidePageSubtitle">結婚式について</p>
+    </header>
+
+
+    <!-- ABOUT -->
+    <section class="guide-section" id="guide-about">
+      <div class="guide-content">
+
+        <div class="guide-block">
+          <p class="guide-label">DATE</p>
+          <h2>2027.08.08 SUN</h2>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">CEREMONY & RECEPTION</p>
+          <p>⚪︎⚪︎</p>
+          <p class="guide-text">
+            受付　00:00〜<br>
+            挙式　00:00〜<br>
+            披露宴　00:00〜
+          </p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">DRESS CODE</p>
+          <p class="guide-text">平服でお越しください</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ACCESS -->
+    <section class="guide-section" id="guide-access">
+      <div class="guide-content">
+
+        <div class="guide-block">
+          <p class="guide-label">VENUE</p>
+          <h2>⚪︎⚪︎</h2>
+          <p class="guide-text">
+            〒000-0000<br>
+            高知県⚪︎⚪︎市⚪︎⚪︎
+          </p>
+          <a class="guide-button" href="#" target="_blank" rel="noopener">
+            Google Maps
+          </a>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">ACCESS</p>
+          <p class="guide-text">最寄り駅：⚪︎⚪︎駅</p>
+          <p class="guide-text">駅から徒歩00分</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">PARKING</p>
+          <p class="guide-text">
+            お車でお越しの方は<br>
+            ⚪︎⚪︎駐車場をご利用ください
+          </p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">SHUTTLE BUS</p>
+          <p class="guide-text">
+            ⚪︎⚪︎駅から送迎バスをご用意しています
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SCHEDULE -->
+    <section class="guide-section" id="guide-schedule">
+      <div class="guide-content">
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <p class="timeline-time">00:00</p>
+            <div class="timeline-dot"></div>
+            <div class="timeline-text">
+              <p class="guide-label">RECEPTION</p>
+              <p>受付開始</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-time">00:00</p>
+            <div class="timeline-dot"></div>
+            <div class="timeline-text">
+              <p class="guide-label">CEREMONY</p>
+              <p>挙式</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-time">00:00</p>
+            <div class="timeline-dot"></div>
+            <div class="timeline-text">
+              <p class="guide-label">RECEPTION</p>
+              <p>披露宴</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <p class="timeline-time">00:00</p>
+            <div class="timeline-dot"></div>
+            <div class="timeline-text">
+              <p class="guide-label">END</p>
+              <p>お開き</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="guide-section" id="guide-faq">
+      <div class="guide-content">
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">01</span>
+            <span>服装について教えてください</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>決まったドレスコードはございません。</p>
+            <p>平服でお越しください。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">02</span>
+            <span>駐車場はありますか？</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>⚪︎⚪︎駐車場をご利用いただけます。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">03</span>
+            <span>喫煙所はありますか？</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>2階待ち合いスペース横のベランダで喫煙いただけます。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">04</span>
+            <span>子どもを連れて行っても大丈夫ですか？</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>もちろん大丈夫です。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">05</span>
+            <span>写真撮影について教えてください</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>会場内での写真撮影は自由にお楽しみください。</p>
+            <p>撮影いただいたお写真・動画はぜひ、ご案内しているリンクに</p>
+            <p>アップロードいただけますと幸いです。</p>
+            <p>皆さんの素敵なお写真・動画を心より楽しみにしております。</p>
+            <p>(新郎新婦が写っていなくても大歓迎です！)</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">06</span>
+            <span>遅れて到着する場合はどうすればいいですか？</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>遅れて到着する場合は、会場スタッフへお声がけください。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span class="faq-number">07</span>
+            <span>荷物を預けることはできますか？</span>
+            <span class="faq-plus">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>クロークをご利用いただけます。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PHOTO -->
+    <section class="guide-section" id="guide-photo">
+      <div class="guide-content photo-content">
+
+        <div class="guide-block">
+          <p class="guide-label">PHOTO</p>
+          <h2>Share Your Photos</h2>
+          <p class="guide-text">
+            結婚式で撮影した写真を<br>
+            ぜひみんなで共有してください
+          </p>
+          <a class="guide-button" href="#" target="_blank" rel="noopener">
+            Photo Album
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- AFTER PARTY -->
+    <section class="guide-section" id="guide-afterparty">
+      <div class="guide-content">
+
+        <div class="guide-block">
+          <p class="guide-label">DATE</p>
+          <p class="guide-text">2027.08.08 SUN</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">TIME</p>
+          <p class="guide-text">00:00〜</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">VENUE</p>
+          <p class="guide-text">
+            ⚪︎⚪︎<br>
+            〒000-0000<br>
+            高知県⚪︎⚪︎市⚪︎⚪︎
+          </p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">FEE</p>
+          <p class="guide-text">¥0,000</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-block">
+          <p class="guide-label">DRESS CODE</p>
+          <p class="guide-text">⚪︎⚪︎</p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="guide-footer">
+      <p>We look forward to seeing you</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

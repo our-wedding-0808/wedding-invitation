@@ -1,0 +1,485 @@
+:root {
+  --ink: #596a70;
+  --blue: #9dbbc9;
+  --blue-light: #dceaf0;
+  --line: #d8e3e7;
+  --background: #f8fafb;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--ink);
+
+  font-family: "Noto Serif JP", serif;
+
+  background:
+    linear-gradient(
+      rgba(224, 238, 245, 0.72),
+      rgba(224, 238, 245, 0.72)
+    ),
+    url("background.jpg") center / cover fixed;
+}
+
+.form-page {
+  min-height: 100vh;
+  padding: 40px 16px 60px;
+}
+
+.form-container {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  padding: 42px 30px 48px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 5px 24px rgba(89, 106, 112, 0.08);
+}
+
+.form-header {
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+.form-eyebrow {
+  margin: 0 0 6px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+}
+
+.form-header h1 {
+  margin: 0;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.form-intro {
+  margin: 10px 0 0;
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.form-section {
+  margin-bottom: 34px;
+}
+
+.form-section:last-of-type {
+  margin-bottom: 30px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.required,
+.optional {
+  display: inline-block;
+  margin-left: 7px;
+
+  font-family: "Noto Serif JP", serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.required {
+  color: #8aaab7;
+}
+
+.optional {
+  color: #a9b1b4;
+}
+
+.form-note {
+  margin: 0 0 12px;
+
+  color: #7d898d;
+
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px 13px;
+
+  border: 1px solid var(--line);
+  border-radius: 0;
+  outline: none;
+
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.9);
+
+  font-family: "Noto Serif JP", serif;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  border-color: #9dbbc9;
+
+  box-shadow:
+    0 0 0 2px rgba(157, 187, 201, 0.12);
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.8;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b8c1c4;
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.radio-card {
+  position: relative;
+  display: block;
+
+  cursor: pointer;
+}
+
+.radio-card input {
+  position: absolute;
+  opacity: 0;
+}
+
+.radio-card span {
+  display: block;
+  padding: 12px;
+
+  border: 1px solid var(--line);
+
+  text-align: center;
+  font-size: 13px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.radio-card input:checked + span {
+  border-color: #9dbbc9;
+
+  color: #607f8c;
+  background: #eef5f7;
+}
+
+.conditional-area {
+  margin-top: 20px;
+  padding-top: 20px;
+
+  border-top: 1px solid #e5ecef;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.sub-label {
+  display: block;
+  margin: 18px 0 8px;
+
+  color: #68777c;
+
+  font-size: 12px;
+}
+
+.children-meal {
+  margin-top: 22px;
+  padding: 18px;
+
+  background: #f8fafb;
+}
+
+.children-meal .sub-label {
+  margin-top: 0;
+}
+
+.radio-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  margin-top: 14px;
+}
+
+.radio-stack label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.radio-stack input {
+  accent-color: #9dbbc9;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+
+  border: 1px solid #a8c1cc;
+
+  color: #657f8b;
+  background: rgba(255, 255, 255, 0.7);
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.submit-button:hover {
+  color: #fff;
+  background: #9dbbc9;
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.form-message {
+  margin: 14px 0 0;
+
+  color: #a77d7d;
+
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+
+/* ==================================
+   回答完了画面
+================================== */
+
+.complete-message {
+  padding: 40px 10px;
+
+  text-align: center;
+}
+
+.complete-eyebrow {
+  margin: 0 0 8px;
+
+  color: #819eab;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+.complete-message h2 {
+  margin: 0 0 25px;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.complete-message p:last-child {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 2.2;
+}
+
+
+/* ==================================
+   公式LINE案内
+================================== */
+
+.line-guide {
+  margin-top: 36px;
+}
+
+.complete-divider {
+  width: 70px;
+  height: 1px;
+
+  margin: 0 auto 32px;
+
+  background: #d8e3e7;
+}
+
+.line-guide-title {
+  margin: 0 0 22px !important;
+
+  color: #718d9b;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px !important;
+  letter-spacing: 0.08em;
+}
+
+
+/* ==================================
+   QRコード
+================================== */
+
+.line-qr {
+  width: 180px;
+  height: 180px;
+
+  margin: 28px auto 12px;
+  padding: 8px;
+
+  background: #fff;
+
+  border: 1px solid #d8e3e7;
+}
+
+.line-qr img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.line-qr-caption {
+  margin: 0 0 14px !important;
+
+  color: #718d9b;
+
+  font-size: 11px !important;
+  letter-spacing: 0.05em;
+}
+
+
+/* ==================================
+   LINE URL
+================================== */
+
+.line-link {
+  display: inline-block;
+
+  max-width: 100%;
+
+  margin: 0 auto 12px;
+  padding: 9px 0;
+
+  color: #718d9b;
+
+  font-size: 11px;
+  line-height: 1.7;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  word-break: break-all;
+
+  transition:
+    color 0.2s ease;
+}
+
+.line-link:hover {
+  color: #596a70;
+}
+
+
+/* ==================================
+   LINE案内文章
+================================== */
+
+.line-guide-text {
+  margin: 0 0 18px !important;
+
+  color: #7d898d;
+
+  font-size: 11px !important;
+  line-height: 2 !important;
+}
+
+.line-registration-note {
+  margin-top: 4px !important;
+  margin-bottom: 26px !important;
+}
+
+
+/* ==================================
+   スマートフォン
+================================== */
+
+@media (max-width: 420px) {
+
+  .form-page {
+    padding: 20px 10px 40px;
+  }
+
+  .form-container {
+    padding: 34px 20px 40px;
+  }
+
+  .form-header {
+    margin-bottom: 35px;
+  }
+
+  .form-header h1 {
+    font-size: 43px;
+  }
+
+  .line-qr {
+    width: 160px;
+    height: 160px;
+  }
+
+  .line-link {
+    font-size: 10px;
+  }
+
+}
