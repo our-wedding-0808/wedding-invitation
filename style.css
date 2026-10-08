@@ -1537,3 +1537,26 @@ h1 {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==================================
+   ガイド本文：中央揃え
+================================== */
+
+.guide-container .guide-text,
+.guide-container .guide-note,
+.guide-container .guide-info-label,
+.guide-container .guide-info-value,
+.guide-container .schedule-time,
+.guide-container .schedule-content,
+.guide-container .schedule-title,
+.guide-container .schedule-note,
+.guide-container .photo-share-text,
+.guide-container .afterparty-text {
+  text-align: center;
+}
+
+/* FAQだけは左揃え */
+.guide-container .faq-question,
+.guide-container .faq-answer {
+  text-align: left;
+}
