@@ -23,7 +23,7 @@ window.scrollTo(0, 0);
 
 
 /* ==================================
-   LINE案内ページ
+   LINE案内ページの設定
 ================================== */
 
 const guideInfo = {
@@ -60,7 +60,7 @@ const guideInfo = {
 
 
 /* ==================================
-   URLの ?guide=○○ を確認
+   URLを確認
 ================================== */
 
 const params = new URLSearchParams(window.location.search);
@@ -89,7 +89,7 @@ faqItems.forEach((item) => {
 
 
 /* ==================================
-   案内ページを表示
+   LINE案内ページを表示
 ================================== */
 
 function showGuide(key) {
@@ -99,21 +99,27 @@ function showGuide(key) {
   if (!info) return;
 
 
-  /* 招待状を完全に非表示 */
+  /* ----------------------------------
+     招待状を非表示
+  ---------------------------------- */
 
   if (invitationView) {
     invitationView.style.display = "none";
   }
 
 
-  /* 案内ページを表示 */
+  /* ----------------------------------
+     案内ページを表示
+  ---------------------------------- */
 
   if (guideView) {
     guideView.style.display = "block";
   }
 
 
-  /* タイトル変更 */
+  /* ----------------------------------
+     ページタイトル
+  ---------------------------------- */
 
   if (guidePageTitle) {
     guidePageTitle.textContent = info.title;
@@ -124,32 +130,44 @@ function showGuide(key) {
   }
 
 
-  /* すべての案内セクションを非表示 */
+  /* ----------------------------------
+     すべての案内ページを一旦非表示
+  ---------------------------------- */
 
   const sections = document.querySelectorAll(".guide-section");
 
   sections.forEach((section) => {
+
     section.style.display = "none";
+
   });
 
 
-  /* 指定されたページだけ表示 */
+  /* ----------------------------------
+     指定されたページだけ表示
+  ---------------------------------- */
 
   const targetSection = document.getElementById(
-    `guide-${key}`
+    "guide-" + key
   );
 
   if (targetSection) {
+
     targetSection.style.display = "block";
+
   }
 
 
-  /* ページタイトル */
+  /* ----------------------------------
+     ブラウザのタイトル
+  ---------------------------------- */
 
-  document.title = `${info.title} | Our Wedding`;
+  document.title = info.title + " | Our Wedding";
 
 
-  /* 一番上から表示 */
+  /* ----------------------------------
+     ページ最上部へ
+  ---------------------------------- */
 
   window.scrollTo({
     top: 0,
@@ -166,34 +184,55 @@ function showGuide(key) {
 
 function showInvitation() {
 
+
+  /* ----------------------------------
+     招待状を表示
+  ---------------------------------- */
+
   if (invitationView) {
     invitationView.style.display = "block";
   }
+
+
+  /* ----------------------------------
+     案内ページを非表示
+  ---------------------------------- */
 
   if (guideView) {
     guideView.style.display = "none";
   }
 
+
   document.title = "Our Wedding Invitation";
 
 
-  /* ==================================
-     封筒アニメーション
-  ================================== */
+  /* ----------------------------------
+     封筒アニメーションに必要な
+     要素がなければ終了
+  ---------------------------------- */
 
   if (!opening || !wax || !page) {
     return;
   }
 
 
+  /* ==================================
+     シーリングスタンプをクリック
+  ================================== */
+
   wax.addEventListener("click", () => {
+
+
+    /* 2回クリック防止 */
 
     if (hasStarted) return;
 
     hasStarted = true;
 
 
-    /* タップを受け付ける */
+    /* ----------------------------------
+       TAPを消す
+    ---------------------------------- */
 
     opening.classList.add("started");
 
@@ -210,8 +249,7 @@ function showInvitation() {
 
 
     /* ==================================
-       2. 折りたたまれた便箋が
-          封筒から出てくる
+       2. 便箋が封筒から出てくる
     ================================== */
 
     window.setTimeout(() => {
@@ -233,8 +271,7 @@ function showInvitation() {
 
 
     /* ==================================
-       4. 便箋の上半分を
-          折り目から上へ開く
+       4. 便箋を上方向へ開く
     ================================== */
 
     window.setTimeout(() => {
@@ -250,20 +287,24 @@ function showInvitation() {
 
     window.setTimeout(() => {
 
+
+      /* 必ずページ最上部から表示 */
+
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: "instant"
       });
 
+
       page.classList.add("show");
+
 
     }, 4300);
 
 
     /* ==================================
-       6. 白いオープニング画面を
-          フェードアウト
+       6. オープニング画面を消す
     ================================== */
 
     window.setTimeout(() => {
@@ -271,6 +312,7 @@ function showInvitation() {
       opening.classList.add("hide");
 
     }, 5300);
+
 
   });
 
@@ -283,9 +325,19 @@ function showInvitation() {
 
 if (guideKey && guideInfo[guideKey]) {
 
+  /*
+    URLに ?guide=about などがある場合
+    → 案内ページを表示
+  */
+
   showGuide(guideKey);
 
 } else {
+
+  /*
+    URLにguideがない場合
+    → 通常の招待状を表示
+  */
 
   showInvitation();
 
