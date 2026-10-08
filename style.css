@@ -958,8 +958,6 @@ h1 {
 
 .guide-block {
   margin-bottom: 34px;
-
-  text-align: center;
 }
 
 .guide-block:last-child {
@@ -1051,8 +1049,6 @@ h1 {
 
   border-top: 1px solid var(--blue-line);
   border-bottom: 1px solid var(--blue-line);
-
-  text-align: center;
 }
 
 .guide-info-row {
@@ -1069,8 +1065,6 @@ h1 {
   font-size: 12px;
 
   line-height: 1.8;
-
-  text-align: center;
 }
 
 .guide-info-row:first-child {
@@ -1157,8 +1151,6 @@ h1 {
   padding: 17px 0;
 
   border-bottom: 1px solid #e8eef0;
-
-  text-align: center;
 }
 
 .schedule-item:first-child {
@@ -1478,16 +1470,12 @@ h1 {
     gap: 10px;
 
     font-size: 11px;
-
-    text-align: center;
   }
 
   .schedule-item {
     grid-template-columns: 68px 1fr;
 
     gap: 12px;
-
-    text-align: center;
   }
 
   .schedule-time {
@@ -1532,8 +1520,6 @@ h1 {
     grid-template-columns: 76px 1fr;
 
     gap: 8px;
-
-    text-align: center;
   }
 }
 
