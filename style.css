@@ -2,14 +2,23 @@
   --paper: #faf9f5;
   --paper-deep: #f5f2eb;
   --white: #fffdf9;
+
   --ink: #596a70;
   --ink-light: #71838a;
+
   --blue: #dceaf0;
   --blue-deep: #9dbbc9;
   --blue-line: #d3e1e6;
+
   --paper-border: #ddd9cf;
+
   --guide-bg: rgba(255, 255, 255, 0.94);
 }
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
   box-sizing: border-box;
@@ -35,9 +44,15 @@ body {
     url("background.jpg") center / cover fixed;
 }
 
-/* ==================================
-   オープニング画面
-================================== */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================
+   オープニング
+========================================= */
 
 .opening {
   position: fixed;
@@ -65,6 +80,11 @@ body {
   pointer-events: none;
 }
 
+
+/* =========================================
+   封筒シーン
+========================================= */
+
 .envelope-scene {
   position: relative;
 
@@ -75,9 +95,10 @@ body {
   perspective-origin: center center;
 }
 
-/* ==================================
+
+/* =========================================
    封筒
-================================== */
+========================================= */
 
 .envelope {
   position: absolute;
@@ -93,9 +114,8 @@ body {
     transform 0.7s ease;
 }
 
-/* ----------------------------------
-   封筒の背面
----------------------------------- */
+
+/* 封筒背面 */
 
 .envelope-back {
   position: absolute;
@@ -113,6 +133,7 @@ body {
     );
 
   border: 1px solid rgba(191, 210, 217, 0.95);
+
   border-radius: 4px;
 
   box-shadow:
@@ -163,9 +184,8 @@ body {
   pointer-events: none;
 }
 
-/* ----------------------------------
-   封筒の内側
----------------------------------- */
+
+/* 封筒ポケット */
 
 .envelope-pocket {
   position: absolute;
@@ -195,22 +215,8 @@ body {
     inset 0 -2px 5px rgba(88, 112, 121, 0.05);
 }
 
-.envelope-pocket::after {
-  content: "";
 
-  position: absolute;
-  inset: -20%;
-
-  background: none;
-
-  opacity: 0.7;
-
-  pointer-events: none;
-}
-
-/* ----------------------------------
-   封筒前面
----------------------------------- */
+/* 封筒前面 */
 
 .envelope-front {
   position: absolute;
@@ -286,13 +292,15 @@ body {
   pointer-events: none;
 }
 
-/* ----------------------------------
-   フラップ
----------------------------------- */
+
+/* =========================================
+   封筒フラップ
+========================================= */
 
 .envelope-flap {
   position: absolute;
   inset: 0 0 auto;
+
   z-index: 5;
 
   height: 58%;
@@ -315,6 +323,7 @@ body {
   );
 
   transform-origin: center top;
+
   transform: rotateX(0deg);
 
   box-shadow:
@@ -351,6 +360,7 @@ body {
   content: "";
 
   position: absolute;
+
   left: 12%;
   right: 12%;
   bottom: 0;
@@ -377,28 +387,38 @@ body {
 
 .opening.envelope-away .envelope {
   opacity: 0;
-  transform: translateY(18px) scale(0.96);
+
+  transform:
+    translateY(18px)
+    scale(0.96);
+
   pointer-events: none;
 }
 
-/* ==================================
+
+/* =========================================
    シーリングスタンプ
-================================== */
+========================================= */
 
 .wax {
   position: absolute;
+
   left: 50%;
   top: 52%;
+
   z-index: 30;
 
   width: 68px;
   height: 68px;
+
   padding: 0;
 
   border: none;
+
   background: transparent;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   cursor: pointer;
 
@@ -416,7 +436,9 @@ body {
   object-fit: contain;
 
   filter:
-    drop-shadow(0 3px 5px rgba(80, 70, 65, 0.16));
+    drop-shadow(
+      0 3px 5px rgba(80, 70, 65, 0.16)
+    );
 }
 
 .wax:active {
@@ -427,6 +449,7 @@ body {
 
 .opening.started .wax {
   opacity: 0;
+
   pointer-events: none;
 
   transform:
@@ -434,33 +457,43 @@ body {
     scale(0.7);
 }
 
+
+/* TAP */
+
 .tap {
   position: absolute;
+
   left: 50%;
   top: calc(52% + 38px);
+
   z-index: 31;
 
   color: #829da9;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 13px;
+
   letter-spacing: 0.22em;
 
   transform: translateX(-50%);
 
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease;
 }
 
 .opening.started .tap {
   opacity: 0;
 }
 
-/* ==================================
-   便箋全体
-================================== */
+
+/* =========================================
+   便箋
+========================================= */
 
 .letter {
   position: absolute;
+
   left: 15%;
   bottom: 5%;
 
@@ -470,10 +503,13 @@ body {
   z-index: 1;
 
   opacity: 0;
+
   visibility: hidden;
+
   pointer-events: none;
 
-  transform: translateY(24px);
+  transform:
+    translateY(24px);
 
   transition:
     opacity 0.55s ease,
@@ -485,9 +521,11 @@ body {
   z-index: 20;
 
   opacity: 1;
+
   visibility: visible;
 
-  transform: translateY(-8%);
+  transform:
+    translateY(-8%);
 
   transition:
     opacity 0.55s ease,
@@ -495,12 +533,14 @@ body {
     visibility 0s;
 }
 
-/* ==================================
-   下半分：固定された紙
-================================== */
+
+/* =========================================
+   便箋 下半分
+========================================= */
 
 .letter-base {
   position: absolute;
+
   left: 0;
   top: 50%;
 
@@ -536,12 +576,14 @@ body {
     );
 }
 
-/* ==================================
-   上半分：折り返す紙
-================================== */
+
+/* =========================================
+   便箋 上半分
+========================================= */
 
 .letter-fold {
   position: absolute;
+
   left: 0;
   top: 0;
 
@@ -592,9 +634,10 @@ body {
   transform: rotateX(180deg);
 }
 
-/* ==================================
-   便箋中央の文字
-================================== */
+
+/* =========================================
+   Wedding Invitation文字
+========================================= */
 
 .letter-content {
   position: absolute;
@@ -603,6 +646,7 @@ body {
   z-index: 25;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -611,9 +655,11 @@ body {
   color: #71838a;
 
   opacity: 0;
+
   pointer-events: none;
 
-  transition: opacity 0.45s ease;
+  transition:
+    opacity 0.45s ease;
 }
 
 .opening.letter-open .letter-content {
@@ -626,17 +672,20 @@ body {
   margin: 0;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: clamp(16px, 4vw, 21px);
+
   font-weight: 400;
+
   letter-spacing: 0.12em;
 }
 
-/* ==================================
-   中央の折り目
-================================== */
+
+/* 折り目 */
 
 .letter-crease {
   position: absolute;
+
   top: 50%;
   left: 0;
 
@@ -645,24 +694,19 @@ body {
   width: 100%;
   height: 1px;
 
-  background: rgba(190, 180, 165, 0.45);
+  background:
+    rgba(190, 180, 165, 0.45);
 
-  transform: translateY(-0.5px);
+  transform:
+    translateY(-0.5px);
 
-  transition: opacity 0.15s ease;
+  transition:
+    opacity 0.15s ease;
 }
-
-/* ==================================
-   上方向に開く
-================================== */
 
 .opening.letter-open .letter-fold {
   transform: rotateX(360deg);
 }
-
-/* ==================================
-   便箋が開いたら境界線を消す
-================================== */
 
 .opening.letter-open .letter-crease,
 .opening.letter-open .letter-base,
@@ -675,9 +719,10 @@ body {
   opacity: 0;
 }
 
-/* ==================================
+
+/* =========================================
    招待状本編
-================================== */
+========================================= */
 
 .page {
   min-height: 100vh;
@@ -685,9 +730,11 @@ body {
   padding: 40px 16px 60px;
 
   opacity: 0;
+
   visibility: hidden;
 
-  transform: translateY(12px);
+  transform:
+    translateY(12px);
 
   transition:
     opacity 1s ease,
@@ -697,9 +744,11 @@ body {
 
 .page.show {
   opacity: 1;
+
   visibility: visible;
 
-  transform: translateY(0);
+  transform:
+    translateY(0);
 
   transition:
     opacity 1s ease,
@@ -711,9 +760,11 @@ body {
   width: min(100%, 500px);
 
   margin: 0 auto;
+
   padding: 42px 28px 46px;
 
-  background: rgba(255, 255, 255, 0.93);
+  background:
+    rgba(255, 255, 255, 0.93);
 
   text-align: center;
 
@@ -725,7 +776,9 @@ body {
   margin: 0 0 8px;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 12px;
+
   letter-spacing: 0.22em;
 }
 
@@ -735,7 +788,9 @@ h1 {
   color: #718d9b;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: clamp(36px, 9vw, 52px);
+
   font-weight: 400;
 
   letter-spacing: 0.04em;
@@ -764,6 +819,7 @@ h1 {
   margin: 0 0 32px;
 
   font-size: 19px;
+
   letter-spacing: 0.08em;
 }
 
@@ -777,7 +833,9 @@ h1 {
 
 .message {
   font-size: 13px;
+
   line-height: 2.25;
+
   letter-spacing: 0.03em;
 }
 
@@ -787,13 +845,20 @@ h1 {
 
 .details {
   margin-top: 38px;
+
   padding: 28px 10px;
 
-  border-top: 1px solid var(--blue-line);
-  border-bottom: 1px solid var(--blue-line);
+  border-top:
+    1px solid var(--blue-line);
+
+  border-bottom:
+    1px solid var(--blue-line);
 
   font-size: 13px;
+
   line-height: 1.9;
+
+  text-align: center;
 }
 
 .section-label {
@@ -802,13 +867,17 @@ h1 {
   color: #819eab;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 13px;
+
   letter-spacing: 0.2em;
 }
 
 .date {
   font-family: "Cormorant Garamond", serif;
+
   font-size: 25px;
+
   letter-spacing: 0.08em;
 }
 
@@ -825,6 +894,7 @@ h1 {
   margin: 30px 0 22px;
 
   font-size: 12px;
+
   line-height: 2;
 }
 
@@ -838,10 +908,14 @@ h1 {
   border: 1px solid #a8c1cc;
 
   color: #657f8b;
-  background: rgba(255, 255, 255, 0.65);
+
+  background:
+    rgba(255, 255, 255, 0.65);
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 17px;
+
   letter-spacing: 0.2em;
 
   text-decoration: none;
@@ -863,14 +937,18 @@ h1 {
   color: #879da6;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 15px;
+
   font-style: italic;
+
   letter-spacing: 0.04em;
 }
 
-/* ==================================
-   LINE用ガイドページ
-================================== */
+
+/* =========================================
+   LINE案内ページ
+========================================= */
 
 .guide-view {
   width: 100%;
@@ -879,50 +957,28 @@ h1 {
   padding: 34px 16px 60px;
 }
 
-/* ガイド全体の白い紙 */
 
-.guide-container {
-  width: min(100%, 500px);
-
-  margin: 0 auto;
-  padding: 38px 28px 48px;
-
-  background: var(--guide-bg);
-
-  box-shadow:
-    0 5px 24px rgba(89, 106, 112, 0.08);
-}
-
-/* ==================================
-   ガイドヘッダー
-================================== */
+/* =========================================
+   LINE案内ヘッダー
+========================================= */
 
 .guide-header {
-  margin-bottom: 38px;
+  width: min(100%, 500px);
+
+  margin: 0 auto 24px;
 
   text-align: center;
 }
 
-.guide-header::after {
-  content: "";
-
-  display: block;
-
-  width: 32px;
-  height: 1px;
-
-  margin: 23px auto 0;
-
-  background: var(--blue-deep);
-}
-
-.guide-page-title {
+.guide-title {
   margin: 0;
 
   color: #718d9b;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 35px;
+
   font-weight: 400;
 
   line-height: 1.2;
@@ -930,7 +986,7 @@ h1 {
   letter-spacing: 0.12em;
 }
 
-.guide-page-subtitle {
+.guide-subtitle {
   margin: 7px 0 0;
 
   color: #71838a;
@@ -940,9 +996,31 @@ h1 {
   letter-spacing: 0.08em;
 }
 
-/* ==================================
+
+/* =========================================
+   白い枠
+========================================= */
+
+.guide-card {
+  width: min(100%, 500px);
+
+  margin: 0 auto;
+
+  padding: 38px 28px 48px;
+
+  background:
+    var(--guide-bg);
+
+  box-shadow:
+    0 5px 24px rgba(89, 106, 112, 0.08);
+
+  text-align: center;
+}
+
+
+/* =========================================
    ガイドセクション
-================================== */
+========================================= */
 
 .guide-section {
   display: none;
@@ -952,17 +1030,10 @@ h1 {
   display: block;
 }
 
-/* ==================================
-   ガイド内の各ブロック
-================================== */
 
-.guide-block {
-  margin-bottom: 34px;
-}
-
-.guide-block:last-child {
-  margin-bottom: 0;
-}
+/* =========================================
+   ラベル
+========================================= */
 
 .guide-label {
   margin: 0 0 9px;
@@ -970,6 +1041,7 @@ h1 {
   color: #819eab;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 13px;
 
   letter-spacing: 0.18em;
@@ -977,7 +1049,12 @@ h1 {
   text-align: center;
 }
 
-.guide-text {
+
+/* =========================================
+   メイン本文
+========================================= */
+
+.guide-main-text {
   margin: 0;
 
   font-size: 13px;
@@ -987,10 +1064,15 @@ h1 {
   text-align: center;
 }
 
-.guide-note {
+
+/* =========================================
+   補足本文
+========================================= */
+
+.guide-sub-text {
   margin: 8px 0 0;
 
-  color: #829197;
+  color: #71838a;
 
   font-size: 11px;
 
@@ -999,11 +1081,31 @@ h1 {
   text-align: center;
 }
 
-/* ==================================
-   ガイド用区切り線
-================================== */
 
-.guide-divider {
+/* =========================================
+   日付
+========================================= */
+
+.guide-date {
+  margin: 0;
+
+  color: #657f8b;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 25px;
+
+  letter-spacing: 0.08em;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   区切り線
+========================================= */
+
+.guide-line {
   width: 32px;
   height: 1px;
 
@@ -1012,111 +1114,37 @@ h1 {
   background: var(--blue-line);
 }
 
-/* ==================================
-   日付・時間など
-================================== */
 
-.guide-date {
-  margin: 0;
+/* =========================================
+   ボタン
+========================================= */
 
-  color: #657f8b;
-
-  font-family: "Cormorant Garamond", serif;
-  font-size: 25px;
-
-  letter-spacing: 0.08em;
-
-  text-align: center;
-}
-
-.guide-time {
-  margin: 5px 0 0;
-
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
-
-  letter-spacing: 0.08em;
-
-  text-align: center;
-}
-
-/* ==================================
-   情報カード
-================================== */
-
-.guide-info {
-  padding: 20px 18px;
-
-  border-top: 1px solid var(--blue-line);
-  border-bottom: 1px solid var(--blue-line);
-}
-
-.guide-info-row {
-  display: grid;
-
-  grid-template-columns: 95px 1fr;
-
-  gap: 14px;
-
-  padding: 12px 0;
-
-  border-bottom: 1px solid #edf1f2;
-
-  font-size: 12px;
-
-  line-height: 1.8;
-}
-
-.guide-info-row:first-child {
-  padding-top: 0;
-}
-
-.guide-info-row:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.guide-info-label {
-  color: #819eab;
-
-  font-family: "Cormorant Garamond", serif;
-
-  letter-spacing: 0.08em;
-
-  text-align: center;
-}
-
-.guide-info-value {
-  color: var(--ink);
-
-  word-break: break-word;
-
-  text-align: center;
-}
-
-/* ==================================
-   ACCESS
-================================== */
-
-.guide-map {
+.guide-button {
   display: block;
 
   width: 100%;
 
-  margin-top: 18px;
-  padding: 12px 16px;
+  max-width: 250px;
+
+  margin: 18px auto 0;
+
+  padding: 11px 20px;
 
   border: 1px solid #a8c1cc;
 
   color: #657f8b;
-  background: rgba(255, 255, 255, 0.65);
+
+  background:
+    rgba(255, 255, 255, 0.65);
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: 15px;
 
   letter-spacing: 0.12em;
 
   text-align: center;
+
   text-decoration: none;
 
   transition:
@@ -1124,22 +1152,16 @@ h1 {
     background 0.25s ease;
 }
 
-.guide-map:hover {
+.guide-button:hover {
   color: #fff;
 
   background: var(--blue-deep);
 }
 
-/* ==================================
-   SCHEDULE
-================================== */
 
-.schedule-list {
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
-}
+/* =========================================
+   当日の流れ
+========================================= */
 
 .schedule-item {
   display: grid;
@@ -1150,14 +1172,20 @@ h1 {
 
   padding: 17px 0;
 
-  border-bottom: 1px solid #e8eef0;
+  border-bottom:
+    1px solid #e8eef0;
+
+  align-items: center;
 }
 
 .schedule-item:first-child {
-  border-top: 1px solid #e8eef0;
+  border-top:
+    1px solid #e8eef0;
 }
 
 .schedule-time {
+  margin: 0;
+
   color: #718d9b;
 
   font-family: "Cormorant Garamond", serif;
@@ -1170,55 +1198,66 @@ h1 {
 }
 
 .schedule-content {
-  font-size: 12px;
+  text-align: center;
+}
+
+.schedule-title {
+  margin: 0 0 3px;
+
+  font-size: 13px;
 
   line-height: 1.8;
 
   text-align: center;
 }
 
-.schedule-title {
-  margin: 0 0 2px;
-
-  font-size: 13px;
-
-  text-align: center;
-}
-
-.schedule-note {
+.schedule-text {
   margin: 0;
 
-  color: #849298;
+  color: #71838a;
 
   font-size: 11px;
 
+  line-height: 1.9;
+
   text-align: center;
 }
 
-/* ==================================
+
+/* =========================================
    FAQ
-================================== */
+========================================= */
 
-.faq-list {
-  display: flex;
+.faq-card {
+  padding-top: 0;
 
-  flex-direction: column;
+  padding-bottom: 0;
 
-  border-top: 1px solid var(--blue-line);
+  text-align: left;
 }
 
 .faq-item {
-  border-bottom: 1px solid var(--blue-line);
+  border-bottom:
+    1px solid var(--blue-line);
+}
+
+.faq-item:first-child {
+  border-top:
+    1px solid var(--blue-line);
 }
 
 .faq-question {
   position: relative;
 
-  display: block;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
 
   width: 100%;
 
-  padding: 18px 34px 18px 4px;
+  padding: 18px 4px;
 
   border: none;
 
@@ -1237,37 +1276,39 @@ h1 {
   cursor: pointer;
 }
 
-.faq-question::after {
-  content: "+";
+.faq-question span:first-child {
+  display: block;
 
-  position: absolute;
+  padding-right: 15px;
 
-  top: 50%;
-  right: 5px;
+  text-align: left;
+}
+
+.faq-plus {
+  flex: 0 0 auto;
 
   color: #8da5ae;
 
   font-family: "Cormorant Garamond", serif;
 
-  font-size: 20px;
+  font-size: 21px;
+
   font-weight: 400;
 
-  transform: translateY(-50%);
+  line-height: 1;
 
   transition:
     transform 0.3s ease;
 }
 
-.faq-item.open .faq-question::after {
-  transform:
-    translateY(-50%)
-    rotate(45deg);
+.faq-item.open .faq-plus {
+  transform: rotate(45deg);
 }
 
 .faq-answer {
   display: none;
 
-  padding: 0 20px 20px 4px;
+  padding: 0 25px 20px 4px;
 
   color: #75848a;
 
@@ -1278,141 +1319,38 @@ h1 {
   text-align: left;
 }
 
+.faq-answer p {
+  margin: 0;
+
+  text-align: left;
+}
+
 .faq-item.open .faq-answer {
   display: block;
 }
 
-/* ==================================
+
+/* =========================================
    PHOTO
-================================== */
+========================================= */
 
-.photo-share {
-  padding: 25px 20px;
-
-  border: 1px solid var(--blue-line);
-
+#guide-photo .guide-card {
   text-align: center;
 }
 
-.photo-share-title {
-  margin: 0 0 10px;
 
-  color: #718d9b;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 20px;
-
-  letter-spacing: 0.08em;
-}
-
-.photo-share-text {
-  margin: 0;
-
-  font-size: 11px;
-
-  line-height: 2;
-
-  text-align: center;
-}
-
-.photo-share-button {
-  display: inline-block;
-
-  margin-top: 18px;
-
-  padding: 11px 26px;
-
-  border: 1px solid #a8c1cc;
-
-  color: #657f8b;
-  background: rgba(255, 255, 255, 0.7);
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 15px;
-
-  letter-spacing: 0.12em;
-
-  text-decoration: none;
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease;
-}
-
-.photo-share-button:hover {
-  color: #fff;
-
-  background: var(--blue-deep);
-}
-
-/* ==================================
+/* =========================================
    AFTER PARTY
-================================== */
+========================================= */
 
-.afterparty-box {
-  padding: 24px 20px;
-
-  border-top: 1px solid var(--blue-line);
-  border-bottom: 1px solid var(--blue-line);
-
+#guide-afterparty .guide-card {
   text-align: center;
 }
 
-.afterparty-title {
-  margin: 0 0 18px;
 
-  color: #718d9b;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 21px;
-
-  letter-spacing: 0.1em;
-}
-
-.afterparty-text {
-  margin: 0;
-
-  font-size: 12px;
-
-  line-height: 2;
-
-  text-align: center;
-}
-
-/* ==================================
-   ガイドページ下部
-================================== */
-
-.guide-footer {
-  margin-top: 42px;
-
-  color: #879da6;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 13px;
-
-  font-style: italic;
-
-  letter-spacing: 0.06em;
-
-  text-align: center;
-}
-
-/* ==================================
-   共通リンク
-================================== */
-
-.guide-view a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ==================================
+/* =========================================
    スマートフォン
-================================== */
+========================================= */
 
 @media (max-width: 420px) {
 
@@ -1420,143 +1358,149 @@ h1 {
     width: 84vw;
   }
 
+
+  /* 招待状 */
+
   .page {
-    padding: 28px 10px 50px;
+    padding:
+      28px 10px 50px;
   }
 
   .invitation {
-    width: calc(100% - 12px);
+    width:
+      calc(100% - 12px);
 
-    padding: 32px 18px 38px;
+    padding:
+      32px 18px 38px;
   }
 
   .message {
     font-size: 12px;
   }
 
-  /* ------------------------------
-     ガイド
-  ------------------------------ */
+
+  /* LINE案内 */
 
   .guide-view {
-    padding: 24px 10px 48px;
-  }
-
-  .guide-container {
-    width: calc(100% - 10px);
-
-    padding: 32px 20px 40px;
+    padding:
+      24px 10px 48px;
   }
 
   .guide-header {
-    margin-bottom: 32px;
+    width:
+      calc(100% - 10px);
+
+    margin-bottom: 20px;
   }
 
-  .guide-page-title {
+  .guide-card {
+    width:
+      calc(100% - 10px);
+
+    padding:
+      32px 20px 40px;
+  }
+
+  .guide-title {
     font-size: 32px;
   }
 
-  .guide-page-subtitle {
+  .guide-subtitle {
     font-size: 11px;
   }
 
-  .guide-info {
-    padding: 18px 12px;
-  }
 
-  .guide-info-row {
-    grid-template-columns: 82px 1fr;
-
-    gap: 10px;
-
-    font-size: 11px;
-  }
+  /* 当日の流れ */
 
   .schedule-item {
-    grid-template-columns: 68px 1fr;
+    grid-template-columns:
+      68px 1fr;
 
     gap: 12px;
   }
 
   .schedule-time {
     font-size: 16px;
+  }
 
-    text-align: center;
+
+  /* FAQ */
+
+  .faq-card {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .faq-question {
     padding-left: 2px;
+    padding-right: 2px;
   }
 
   .faq-answer {
     padding-left: 2px;
     padding-right: 14px;
-
-    text-align: left;
   }
 }
 
-/* ==================================
+
+/* =========================================
    小さいスマートフォン
-================================== */
+========================================= */
 
 @media (max-width: 360px) {
 
   .invitation {
-    width: calc(100% - 4px);
+    width:
+      calc(100% - 4px);
 
     padding-left: 16px;
     padding-right: 16px;
   }
 
-  .guide-container {
-    width: calc(100% - 4px);
+  .guide-header {
+    width:
+      calc(100% - 4px);
+  }
+
+  .guide-card {
+    width:
+      calc(100% - 4px);
 
     padding-left: 17px;
     padding-right: 17px;
   }
 
-  .guide-info-row {
-    grid-template-columns: 76px 1fr;
+  .schedule-item {
+    grid-template-columns:
+      62px 1fr;
 
     gap: 8px;
   }
+
+  .schedule-time {
+    font-size: 15px;
+  }
 }
 
-/* ==================================
+
+/* =========================================
    動きを減らす設定
-================================== */
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
   *,
   *::before {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+    transition-duration:
+      0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    scroll-behavior:
+      auto !important;
   }
-}
-
-/* ==================================
-   ガイド本文：中央揃え
-================================== */
-
-.guide-container .guide-text,
-.guide-container .guide-note,
-.guide-container .guide-info-label,
-.guide-container .guide-info-value,
-.guide-container .schedule-time,
-.guide-container .schedule-content,
-.guide-container .schedule-title,
-.guide-container .schedule-note,
-.guide-container .photo-share-text,
-.guide-container .afterparty-text {
-  text-align: center;
-}
-
-/* FAQだけは左揃え */
-.guide-container .faq-question,
-.guide-container .faq-answer {
-  text-align: left;
 }
