@@ -109,7 +109,7 @@ function showGuide(key) {
   /* 案内ページを表示 */
 
   if (guideView) {
-    guideView.classList.add("is-active");
+    guideView.style.display = "block";
   }
 
 
@@ -129,7 +129,7 @@ function showGuide(key) {
   const sections = document.querySelectorAll(".guide-section");
 
   sections.forEach((section) => {
-    section.classList.remove("is-active");
+    section.style.display = "none";
   });
 
 
@@ -140,7 +140,7 @@ function showGuide(key) {
   );
 
   if (targetSection) {
-    targetSection.classList.add("is-active");
+    targetSection.style.display = "block";
   }
 
 
@@ -167,11 +167,11 @@ function showGuide(key) {
 function showInvitation() {
 
   if (invitationView) {
-    invitationView.style.display = "";
+    invitationView.style.display = "block";
   }
 
   if (guideView) {
-    guideView.classList.remove("is-active");
+    guideView.style.display = "none";
   }
 
   document.title = "Our Wedding Invitation";
@@ -250,8 +250,6 @@ function showInvitation() {
 
     window.setTimeout(() => {
 
-      /* 招待状を必ず一番上から表示 */
-
       window.scrollTo({
         top: 0,
         left: 0,
@@ -285,13 +283,9 @@ function showInvitation() {
 
 if (guideKey && guideInfo[guideKey]) {
 
-  /* LINEから ?guide=○○ で来た場合 */
-
   showGuide(guideKey);
 
 } else {
-
-  /* 通常の招待状 */
 
   showInvitation();
 
