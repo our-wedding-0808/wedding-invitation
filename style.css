@@ -1370,3 +1370,18 @@ h1 {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ACCESS｜道順の説明文を小さくする */
+#guide-access .transport-text {
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* スマートフォン */
+@media (max-width: 420px) {
+  #guide-access .transport-text {
+    font-size: 10px;
+    line-height: 1.85;
+  }
+}
