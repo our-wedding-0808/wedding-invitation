@@ -1504,3 +1504,104 @@ h1 {
       auto !important;
   }
 }
+
+
+/* =========================================
+   ACCESS：交通手段の案内
+========================================= */
+
+#guide-access .guide-transport {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  text-align: left;
+}
+
+/* 各交通手段 */
+#guide-access .transport-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e9e9;
+}
+
+#guide-access .transport-item:first-child {
+  border-top: 1px solid #e5e9e9;
+}
+
+/* アイコンの背景 */
+#guide-access .transport-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #edf4f6;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* テキストエリア */
+#guide-access .transport-content {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+/* 見出し */
+#guide-access .transport-title {
+  margin: 0 0 7px;
+  color: #596a70;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  text-align: left;
+}
+
+/* 説明文 */
+#guide-access .transport-text {
+  margin: 0;
+  color: #71838a;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+/* Google Mapsボタンとの間隔 */
+#guide-access .guide-transport + .guide-button {
+  margin-top: 24px;
+}
+
+/* スマートフォン */
+@media (max-width: 420px) {
+  #guide-access .guide-transport {
+    margin-top: 20px;
+  }
+
+  #guide-access .transport-item {
+    gap: 11px;
+    padding: 17px 0;
+  }
+
+  #guide-access .transport-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  #guide-access .transport-title {
+    font-size: 12px;
+  }
+
+  #guide-access .transport-text {
+    font-size: 11px;
+    line-height: 1.85;
+  }
+}
