@@ -1605,3 +1605,58 @@ h1 {
     line-height: 1.85;
   }
 }
+
+
+/* ========================================
+   ACCESS｜アクセス文字サイズ調整
+======================================== */
+
+/* 各交通手段の見出し */
+#guide-access .transport-title {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+
+/* 説明文・道順 */
+#guide-access .transport-text {
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+/* 北・南・西・東からの道順見出し */
+#guide-access .transport-route {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+/* 注意書き */
+#guide-access .transport-note {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 6px;
+}
+
+/* スマートフォン */
+@media (max-width: 480px) {
+  #guide-access .transport-title {
+    font-size: 15px;
+  }
+
+  #guide-access .transport-text {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  #guide-access .transport-route {
+    font-size: 13px;
+  }
+
+  #guide-access .transport-note {
+    font-size: 12px;
+  }
+}
